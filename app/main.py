@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 from .models import models
 from .config.db import engine
 from .routers import user, post, auth, vote
@@ -26,4 +27,4 @@ app.include_router(vote.router)
 
 @app.get('/')
 async def root():
-    return {"message": "Hey there!"}
+    return RedirectResponse('/docs')
